@@ -1,0 +1,361 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<!-- 
+        Awesome Template
+        http://www.templatemo.com/preview/templatemo_450_awesome
+        -->
+		<title>ESMS</title>
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+		<link href="{% static 'http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' %}" rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="{% static 'css/templatemo-style.css' %}">
+		<script src="{% static 'js/jquery.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/jquery.singlePageNav.min.js' %}"></script>
+		<script src="{% static 'js/typed.js' %}"></script>
+		<script src="{% static 'js/wow.min.js'%}"></script>
+		<script src="{% static 'js/custom.js'%}"></script>
+	</head>
+	<body id="top">
+
+		<!-- start preloader -->
+		<div class="preloader">
+			<div class="sk-spinner sk-spinner-wave">
+     	 		<div class="sk-rect1"></div>
+       			<div class="sk-rect2"></div>
+       			<div class="sk-rect3"></div>
+      	 		<div class="sk-rect4"></div>
+      			<div class="sk-rect5"></div>
+     		</div>
+    	</div>
+    	<!-- end preloader -->
+
+        <!-- start header -->
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 col-xs-12">
+                        <p><i class="fa fa-phone"></i><span> Phone</span>+255 62525 3363</p>
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-12">
+                        <p><i class="fa fa-envelope-o"></i><span> Email</span><a href="winniwalter87@gmail.com">wwm@gmail.com</a></p>
+                    </div>
+                    <div class="col-md-5 col-sm-4 col-xs-12">
+                        <ul class="social-icon">
+						
+                            <li><span>Meet us on</span></li>
+                            <li><a href="#" class="fa fa-facebook"></a></li>
+                            <li><a href="#" class="fa fa-twitter"></a></li>
+                            <li><a href="#" class="fa fa-instagram"></a></li>
+                            <li><a href="#" class="fa fa-youtube"></a></li>
+							
+							{% if user.is_authenticated %}
+						    <li><a href="/logout">LOGOUT</a></li>
+							{% else %}
+							<li><a href="/login">SIGNUP/LOGIN</a></li>
+							
+						     {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- end header -->
+
+    	<!-- start navigation -->
+		<nav class="navbar navbar-default templatemo-nav" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon icon-bar"></span>
+						<span class="icon icon-bar"></span>
+						<span class="icon icon-bar"></span>
+					</button>
+					<a href="#" class="navbar-brand">ESMS</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+					
+						<li><a href="#about">ABOUT</a></li>
+						
+						<li><a href="#service">SERVICE</a></li>
+						<li><a href="#portfolio">PORTFOLIO</a></li>
+						<li><a href="#contact"></a></li>
+					
+						
+					</ul>
+
+				</div>
+			</div>
+			
+		</nav>
+		<!-- end navigation -->
+
+    	<!-- start home -->
+		
+    	<section id="home">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-offset-2 col-md-12">
+    					<h1 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">Welcome to our <span>Event Sharing</span> Management System</h1>
+    					<div class="element">
+                            <div class="sub-element">Save Time 
+								</div>
+                            <div class="sub-element">Save Money</div>
+                            <div class="sub-element">Email Invitations ..</div>
+                        </div>
+    					<a data-scroll href="#about" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">GET STARTED</a>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+    	<!-- end home -->
+
+    	<!-- start about -->
+		<section id="about">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">WE  <span>OFFER</span></h2>
+    				</div>
+					<div class="col-md-3 col-sm-3 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<img src="{% static 'images/icon-business.webp'%}">
+								</div>
+								<h3 class="media-heading">BUSINESS</h3>
+							</div>
+					
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-12 wow fadeInUp" data-wow-offset="50" data-wow-delay="0.9s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<img src="{% static 'images/icon-baby.webp'%}">
+								</div>
+								<h3 class="media-heading">BABY</h3>
+							</div>
+							
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<img src="{% static 'images/icon-wedding.webp'%}">
+								</div>
+								<h3 class="media-heading">WEDDING</h3>
+							</div>
+							
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<img src="{% static 'images/icon-entertaining.webp'%}">
+								</div>
+								<h3 class="media-heading">ENTERTAINING</h3>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+					<div class="col-md-3 col-sm-3 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<img src="{% static 'images/icon-holiday-invitations.webp'%}">
+								</div>
+								<h3 class="media-heading">HOLIDAY</h3>
+							</div>
+							
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-12 wow fadeInUp" data-wow-offset="50" data-wow-delay="0.9s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<img src="{% static 'images/icon-social-distancing.webp'%}">
+								</div>
+								<h3 class="media-heading">SOCIAL</h3>
+							</div>
+							
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<img src="{% static 'images/icon-virtual.webp'%}">
+								</div>
+								<h3 class="media-heading">GRADUATION</h3>
+							</div>
+						
+						</div>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+						<div class="media">
+							<div class="media-heading-wrapper">
+								<div class="media-object pull-left">
+									<img src="{% static 'images/icon-wedding-save.webp'%}">
+								</div>
+								<h3 class="media-heading">BIRTHDAY</h3>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+		<!-- end about -->
+
+    	<!-- end team -->
+
+    	<!-- start service -->
+    	<section id="service">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-12">
+    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">OUR Powerful Features for 
+							<span>Your Online Cards and Invitations </span></h2>
+    				</div>
+    				<div class="col-md-4 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+    					<img src="{% static 'images/icon-messaging.png'%}">
+    					<h4>EMMAILING</h4>
+    					<p>Stay connected with your guests through easy-to-use messaging that is perfect for last-minute updates and check-ins</p>
+    				</div>
+    				<div class="col-md-4 active wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">
+    					<img src="{% static 'images/icon-auto-reminders.png'%}">
+    					<h4>AUTO REMINDER</h4>
+    					<p>Schedule and send reminders to subsets of your guest list to alert them of an upcoming RSVP deadline or event date.</p>
+    				</div>
+    				<div class="col-md-4 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+    					<img src="{% static 'images/ad.png'%}">
+    					<h4>ADDRESS VALIDATION</h4>
+    					<p>Prior to being sent, each email address will be automatically verified to ensure optimal delivery and minimize bouncebacks</p>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+    	<!-- end servie -->
+
+    	<!-- start portfolio -->
+    	<section id="portfolio">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-12">
+    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s"><span>AWESOME</span> PORTFOLIO</h2>
+    				</div>
+    				<div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+                        <div class="portfolio-thumb">
+    					   <img src="{% static 'images/t.png' %}" class="img-responsive" alt="portfolio img 1">
+                                <div class="portfolio-overlay">
+                                    <h4>WEEDING</h4>
+                                    <p>A good marriage isnt something you find, Its something you make....</p>
+                                    <a href="#" class="btn btn-default">DETAIL</a>
+                                </div>
+                        </div>
+    				</div>
+    				<div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+                        <div class="portfolio-thumb">
+                          <img src="{% static 'images/y.png' %}"  class="img-responsive" alt="portfolio img 2">
+                                <div class="portfolio-overlay">
+                                    <h4>BABY</h4>
+                                    <p>A baby is a blessing a gift from heaven little angel......</p>
+                                    <a href="#" class="btn btn-default">DETAIL</a>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+                        <div class="portfolio-thumb">
+                           <img src="{% static 'images/im.jpg' %}" class="img-responsive" alt="portfolio img 3">
+                                <div class="portfolio-overlay">
+                                    <h4>BIRTHDAY</h4>
+                                    <p>Comming together is a beginning , keeping together is a process......</p>
+                                    <a href="#" class="btn btn-default">DETAIL</a>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
+                        <div class="portfolio-thumb">
+                           <img src="{% static 'images/home-bg.jpg' %}" class="img-responsive" alt="portfolio img 4">
+                                <div class="portfolio-overlay">
+                                    <h4>GRADUATION</h4>
+                                    <p>Your education is a dress rehersal for a life that is yours to lead....sss</p>
+                                    <a href="#" class="btn btn-default">DETAIL</a>
+                                </div>
+                        </div>
+                    </div>
+                
+    			</div>
+    		</div>
+    	</section>
+    	<!-- end portfolio -->
+
+    	<!-- start contact -->
+    	<section id="contact">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-12">
+    					<h2 class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">CONTACT <span>AWESOME</span></h2>
+    				</div>
+    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
+    					<form action="#" method="post">
+    						<label>NAME</label>
+    						<input name="fullname" type="text" class="form-control" id="fullname">
+   						  	
+                            <label>EMAIL</label>
+    						<input name="email" type="email" class="form-control" id="email">
+   						  	
+                            <label>MESSAGE</label>
+    						<textarea name="message" rows="4" class="form-control" id="message"></textarea>
+    						
+                            <input type="submit" class="form-control">
+    					</form>
+    				</div>
+    				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInRight" data-wow-offset="50" data-wow-delay="0.6s">
+    				
+							<img src="{% static 'images/lg.png' %}" class="img-responsive" alt="portfolio img 4">
+    					<br>
+    					<ul class="social-icon">
+    						<li><h4>WE ARE SOCIAL</h4></li>
+    						<li><a href="#" class="fa fa-facebook"></a></li>
+    						<li><a href="#" class="fa fa-twitter"></a></li>
+    						<li><a href="#" class="fa fa-youtube"></a></li>
+    					</ul>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+    	<!-- end contact -->
+
+        <!-- start copyright -->
+        <footer id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+                        ESMS &copy; Copyright 2021. Designed By WWM</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end copyright -->
+
+	</body>
+</html>

@@ -1,0 +1,121 @@
+
+{% load static %}
+{% include "includes/header.html" %}
+
+
+
+
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+      <div class="container-fluid">
+        <div class="header-body">
+          <div class="row align-items-center py-4">
+            <div class="col-lg-6 col-7">
+              <h6 class="h2 text-white d-inline-block mb-0">User</h6>
+              <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                  <li class="breadcrumb-item"><a href="#"><i class="ni ni-single-02 text-blue"></i></a></li>
+                  <li class="breadcrumb-item"><a href="#">Manage User</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Users</li>
+                </ol>
+              </nav>
+            </div>
+            <div class="col-lg-6 col-5 text-right">
+              {% if perms.accounts.add_admins %}
+              <a href="/adduser" class="btn btn-sm btn-neutral">New</a>
+              {% endif %}
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="container-fluid mt--6">
+     
+     
+      <div class="row">
+        <div class="col">
+          <div class="card bg-default shadow">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="text-white mb-0">Manage User</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-dark table-flush">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    
+                    <th>Date Joined</th>
+                    {% if perms.auth.view_group %}
+                    <th>Role</th>
+                    {% endif %}
+                    {% if perms.accounts.change_admins or perms.accounts.delete_admins %}
+                    <th>action</th>
+                    {% endif %}
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody class="list">
+                  {% for a in a %}
+                  <tr>
+                    <th scope="row">
+                      <div class="media align-items-center">
+                        <a href="#" class="avatar rounded-circle mr-2">
+                          <img alt="Image placeholder" src="{{a.profile.url}}">
+                        </a>
+                        <div class="media-body">
+                          <span class="name mb-0 text-sm">{{a.user.last_name | title}},{{a.user.first_name | first | upper}}</span>
+                        </div>
+                      </div>
+                    </th>
+                    <td class="budget">
+                     {{a.user.username}}
+                    </td>
+                    <td>
+                      <span class="badge badge-dot mr-0">
+                        <i class="bg-warning"></i>
+                        <span class="status">{{a.user.date_joined|date:"d m Y g:i a"}}</span>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="badge badge-dot mr-0">
+                        <i class="bg-warning"></i>
+                        <span class="status">{% for i in a.user.groups.all%}{{i.name}}{% endfor %}</span>
+                      </span>
+                    </td>
+                   
+                    <td>   
+              <!-- <a href="#" class="btn btn-sm btn-primary">View</a> -->
+              {% if perms.accounts.change_admins %}
+              <a href="/edituser/{{a.user.id}}" class="btn btn-sm btn-secondary">Edit</a>
+              {% endif %}
+               {% if perms.accounts.delete_admins %}
+              <a href="/removeuser/{{a.user.id}}" class="btn btn-sm bg-danger">Delete</a>
+              {% endif %}
+              <!-- <a href="/deleteuser/{{a.user.id}}" class="btn btn-sm btn-neutral">delete</a> -->
+              {% if perms.auth.add_group %}
+              <a href="/grantRole/{{a.user.id}}" class="btn btn-sm btn-neutral">Manage Role</a>
+              {% endif %}            
+               <!-- {% if a.user.is_active == True %}
+               <a class="btn btn-sm btn-danger"  href="/blockuser/{{a.user.id}}">
+                 <i class="fe fe-lock"></i> Block
+                 {% elif a.user.is_active == False %}
+                 <a class="btn btn-sm btn-warning"  href="/blockuser/{{a.user.id}}">
+                   <i class="fe fe-unlock"></i> UnBlock
+               {% endif %} -->
+          
+                    </td>
+                  
+                  </tr>
+                {% endfor %}
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      {% include "includes/footer.html" %}
+  

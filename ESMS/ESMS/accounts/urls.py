@@ -1,0 +1,35 @@
+from . import views
+from django.urls import path
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('login',views.login,name='login'),
+    path('register',views.register,name='register'),
+    path('dashboard',views.dashboard,name='dashboard'),
+    path('manageuser',views.manageuser,name='manageuser'),
+    path('adduser',views.adduser,name='adduser'),
+    path('manageevent',views.manageevent,name='manageevent'),
+    path('addevent',views.addevent,name='addevent'),
+    path('changepassword',views.changepassword,name='changepassword'),
+    path('profile',views.profile,name='profile'),
+    path('addrole',views.addrole,name='addrole'),
+    path('managerole',views.managerole,name='managerole'),
+    path('editrole/<str:pk>',views.editrole,name='editrole'),
+    path('edituser/<str:pk>',views.edituser,name='edituser'),
+    path("grantRole/<str:pk>",views.grantRole,name="grantRole"),
+    path('blockuser/<str:pk>',views.blockuser,name='blockuser'),
+    path('removeuser/<str:pk>',views.removeuser,name='removeuser'),
+    path('deleteuser/<str:pk>',views.deleteuser,name='deleteuser'),
+    path('deleterole/<str:pk>',views.deleterole,name='deleterole'),
+     path('trash',views.trash,name='trash'),
+     path('restore/<str:pk>',views.restore,name='restore'),
+    path('logout',views.logout,name='logout'),
+    path('eventtype',views.eventtype,name='eventtype'),
+    path('addevent_type',views.addevent_type,name='addevent_type'),
+    path('editevent_type/<str:pk>',views.editevent_type,name='editevent_type'),
+    path('deleteevent_type/<str:pk>',views.deleteevent_type,name='deleteevent_type'),
+    path('deleteevent/<str:pk>',views.deleteevent,name='deleteevent'),
+    path('editevent/<str:pk>',views.editevent,name='editevent'),
+    path('sendevent',views.sendevent,name='sendevent'),
+
+]

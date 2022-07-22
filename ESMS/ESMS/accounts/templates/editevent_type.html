@@ -1,0 +1,74 @@
+
+{% load static %}
+{% include "includes/header.html" %}
+
+
+
+
+    <!-- Header -->
+    <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url(../assets/img/brand/5.png); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <h1 class="display-2 text-white">Hello</h1>
+            <p class="text-white mt-0 mb-5">EVENT</p>
+     <!--        <a href="#!" class="btn btn-neutral">Edit profile</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col-xl-4 order-xl-2">
+      
+        </div>
+        <div class="col-xl-8 order-xl-1">f
+          <div class="card">
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Edit Event </h3>
+                </div>
+                
+              </div>
+            </div>
+            <div class="card-body">
+             <form action="" method="post">
+               {% csrf_token %}
+                <h6 class="heading-small text-muted mb-4">Event information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+
+                        <label class="form-control-label" for="input-username">Name</label>
+                        {% for e in e %}
+                        <input type="text" id="input-username" class="form-control" placeholder="Username" value="{{e.name}}" name="Event_type">
+                        {% endfor %}
+                      </div>
+                    </div>
+                    
+                  </div>
+                 
+                  
+                </div>
+                <div class="pl-lg-4">
+                  
+                  <div class="col-4 text-right">
+               <input type="submit" class="btn btn-lg btn-primary" value="Save Changes">
+                </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <br><br><br>
+      {% include "includes/footer.html" %}
+   

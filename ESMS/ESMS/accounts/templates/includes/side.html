@@ -1,0 +1,87 @@
+{% load static %}
+
+<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+    <div class="scrollbar-inner">
+      <!-- Brand -->
+      <div class="sidenav-header  align-items-center">
+        <a class="navbar-brand" href="javascript:void(0)">
+          <img src="{{user.admins.profile.url}}" class="navbar-brand-img" alt="...">
+        </a>
+      </div>
+      <div class="navbar-inner">
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+          <!-- Nav items -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              
+            
+              <a class="nav-link" href="/dashboard" >
+            
+                <i class="ni ni-tv-2 text-primary"></i>
+                <span class="nav-link-text">Dashboard</span>
+              </a>
+            </li>
+         
+          
+            {% if perms.accounts.view_admins %}
+            <li class="nav-item">
+              <a class="nav-link" href="/manageuser">
+                <i class="ni ni-circle-08 text-pink"></i>
+                <span class="nav-link-text">Manage User</span>
+              </a>
+            </li>
+            {% endif %}
+            {% if perms.auth.view_group %}
+            <li class="nav-item">
+              <a class="nav-link" href="/managerole">
+                <i class="ni ni-chart-pie-35 text-success"></i>
+                <span class="nav-link-text">Manage Role</span>
+              </a>
+            </li>
+            {% endif %}
+
+            {% if perms.accounts.view_event %}           
+             <li class="nav-item">
+              <a class="nav-link" href="/manageevent">
+                <i class="ni ni-email-83 text-default"></i>
+                <span class="nav-link-text">Manage Events</span>
+              </a>
+            </li>
+            {% endif %}
+
+            {% if perms.accounts.view_eventtype %}           
+            <li class="nav-item">
+             <a class="nav-link" href="/eventtype">
+               <i class="ni ni-email-83 text-default"></i>
+               <span class="nav-link-text">Manage Eventtype</span>
+             </a>
+           </li>
+           {% endif %}
+           <li class="nav-item">
+            <a class="nav-link" href="/sendevent">
+              <i class="ni ni-email-83 text-default"></i>
+              <span class="nav-link-text">Send event</span>
+            </a>
+          </li>
+
+            {% if perms.accounts.delete_admins %}
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/trash">
+                <i class="ni ni-atom text-red"></i>
+                <span class="nav-link-text">Recycle</span>
+              </a>
+            </li>
+            {% endif %}
+             <li class="nav-item">
+              <a class="nav-link" href="/profile">
+                <i class="ni ni-single-02 text-yellow"></i>
+                <span class="nav-link-text">Profile</span>
+              </a>
+            </li>
+          
+        </div>
+      </div>
+    </div>
+  </nav>

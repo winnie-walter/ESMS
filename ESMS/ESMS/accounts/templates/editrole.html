@@ -1,0 +1,80 @@
+
+{% load static %}
+{% include "includes/header.html" %}
+
+
+
+
+    <!-- Header -->
+    
+    <!-- Page content -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-4 order-xl-2">
+      
+        </div>
+        <div class="col-xl-8 order-xl-1">
+          <div class="card">
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Add Role </h3>
+                </div>
+                
+              </div>
+            </div>
+            <div class="card-body">
+             <form action="" method="post">
+               {% csrf_token %}
+                <h6 class="heading-small text-muted mb-4">Role</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        {% for r in r %}
+                        <label class="form-control-label" for="input-username">Name</label>
+                        <input type="text" id="input-username" name="name" class="form-control" placeholder="Role Name" value="{{r.name}}">
+                      </div>
+                    </div>
+            
+                  </div>
+                 
+										
+										
+                  
+                  <div class="row">
+                    {% for i in p %}
+                    <div class="col-lg-4">
+                      
+                      <div class="form-group">
+                        
+                        {%if i in r.permissions.all %}
+                        <input type="checkbox" checked name="{{i.name}}" value="{{i.id}}">  {{i.name}}
+                        {% else %}
+                        <input type="checkbox" name="{{i.name}}" value="{{i.id}}">  {{i.name}}
+                        {% endif %}
+                      </div>
+                      
+                    </div>
+                    {% endfor %}
+                  </div>
+                  
+                </div>
+               {% endfor %}
+                <!-- Description -->
+              
+                <div class="pl-lg-4">
+                  
+                  <div class="col-4 text-right">
+               <input type="submit" class="btn btn-lg btn-primary" value="Create Role">
+                </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <br><br><br>
+      {% include "includes/footer.html" %}
+   

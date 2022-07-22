@@ -1,0 +1,361 @@
+%differential equation
+%Use MATLAB to solve the following discrete-time system difference equation yn ) ? yn +3 ( ) 15xn +4xn? )( += 1 2 () yn 1 .( ) (?+ 1 
+%compute the value of y at n = 5, when the input sequence is x(n) = [1 ?2 3 ?4], and the initial conditions are Y(1) 
+x=[1 -2 3 -4]; 
+y(1)=1; 
+y(2)=1; 
+for n=2:4 
+y(n+1)=?2*y(n)+3*y(n-1)+1.5*x(n)+4*x(n-1); 
+end 
+y(5)
+%Write a MATLAB program to simulate the following difference equation: 8 [] ? 5yn? ] ? yn? 2 = xn+ xn? 1 ]yn [ 12 [ ] [] 3 [ 
+%for an input, x[n] = 2n u[n] and the initial conditions: y[?1] = 0 and y[0] = 1. Find values of x[n], the input signal, and y[n], the output signal and plot these signals over the range, ?1 = n = 10. 
+n = 1:10; 
+a = [8 ?5 ?2]; 
+b = [1 3]; 
+yi = [1 0]; 
+xi = 1; 
+zi = filtic(b,a,yi,xi); 
+y = filter(b,a,2.^n,zi) 
+%Using MATLAB, draw the output response for the difference equation given by 
+%() 01 ( 1 yk yk = .* yk? ) + .72 * ( ? 2) + 5
+clc; 
+clear all; 
+n=[1:25]; 
+y(1) = 1;
+y(2) = 2; 
+for k=3:25; 
+y(k)=0.1*y(k?1)+.72*y(k?2)+5; 
+end 
+stem(n,y,'o') 
+xlabel('time ---->'); 
+ylabel('amplitude---->'); 
+%convolution
+%To write a MATLAB program to find the convolution of two sequences follow the below
+clc; 
+clear all; 
+close all; 
+n=0:8; 
+x1=1; 
+x2=0; 
+y1=x1.*(n>=0 & n<=2)+x2.*(n>=2 & n<=8); 
+subplot(2,2,1); 
+stem(n,y1); 
+axis([0 8 0 1.5]); 
+xlabel('time n ---->'); 
+ylabel('amplitude---->'); 
+title('the sequence y1[n]') 
+y2=x1.*(n>=0 & n<=4)+x2.*(n>=4 & n<=8); 
+subplot(2,2,2); 
+stem(n,y2); 
+axis([0 8 0 1.5]); 
+xlabel('time n ---->'); 
+ylabel('amplitude---->'); 
+title('the sequence y2[n]') 
+y=conv(y1,y2); 
+L=length(y); 
+n=0:L-1; 
+subplot(2,2,[3,4]); 
+stem(n,y); 
+axis([0 10 0 4]); 
+xlabel('time n ---->'); 
+ylabel('amplitude---->'); 
+title('the convolution sequence of y1[n]&y2[n]');
+
+% properties
+%Follow the MATLAB program below to find the even and odd parts of a signal. 
+%odd signal after running a program
+
+clc; 
+clear all; 
+close all; 
+t=-10:0.1:10; 
+A=0.8; 
+x1=sin(t); ( for even cos(t)
+x2=sin(-t); (for even cos(-t)
+if(x2==x1) 
+disp('The given signal is even signal'); 
+else 
+if(x2==(-x1)) 
+disp('The given signal is odd signal'); 
+else disp('The given signal is neither even nor odd'); 
+end 
+end 
+xe=(x1+x2)/2; 
+xo=(x1-x2)/2; 
+subplot(2,2,1); 
+plot(t,x1); 
+xlabel('t');
+ylabel('x(t)');
+title('signal x(t)'); 
+subplot(2,2,2); (for even 2,2,1)
+plot(t,x2); (for even t,x1)
+xlabel('t');
+ylabel('x(t)');
+title('signal x(-t)'); 
+subplot(2,2,3); ,,,(for even 2,2,2)
+plot(t,xe); ,,,(for even t,x2)
+xlabel('t');ylabel('x(t)');
+title('even part signal x(t)'); 
+subplot(2,2,4); ,,,,(for even 2,2,3)
+plot(t,xo); ,,,,,,(for even t,xe)
+xlabel('t');ylabel('x(t)');
+title('odd part signal x(t)'); 
+,,,,,for even add this
+subplot(2,2,4); 
+plot(t,xo); 
+xlabel('t');ylabel('x(t)');
+title('odd part signal x(t)'); 
+
+%to dispaly whether its neither even nor odd
+clc; 
+clear all; 
+close all; 
+t=-10:0.1:10; 
+K=1.2; 
+x1=K.^(t); 
+x2=K.^(-t); 
+if(x2==x1) 
+disp('The given signal is even signal'); 
+else if(x2==(-x1)) 
+disp('The given signal is odd signal'); 
+else disp('The given signal is neither even nor odd'); 
+end end xe=(x1+x2)/2; 
+xo=(x1-x2)/2; 
+subplot(2,2,1); 
+plot(t,x1); 
+xlabel('t');ylabel('x(t)');title('signal x(t)'); 
+subplot(2,2,2); 
+plot(t,x2); 
+xlabel('t');ylabel('x(t)');title('signal x(-t)'); 
+subplot(2,2,3); 
+plot(t,xe); 
+xlabel('t');ylabel('x(t)');title('even part signal x(t)'); 
+subplot(2,2,4); 
+plot(t,xo); 
+xlabel('t');ylabel('x(t)');title('odd part signal x(t)');
+
+%A MATLAB program to compute the system response for 20 samples is given below along with the corresponding output shown in graphical form
+Clear all; 
+Close all; 
+xi = [0 -1]; 
+yi = [1 0]; 
+n = 0:1:24; 
+x = (0.5).^n; 
+x = [xi x]; 
+y = []; 
+y = [yi y]; 
+for k = 3:1:27 
+r = 5*x(k-2)+2*x(k-1)-1.5*y(k-1)-2.5*y(k-2); 
+y = [y r]; 
+end 
+subplot(2,1,1), stem(n,x(3:27),'filled','LineWidth',2), grid on
+xlabel('n'); ylabel('x(n)'); 
+subplot(2,1,2), stem(n,y(3:27),'filled','LineWidth',2), grid on
+xlabel('n'); ylabel('y(n)'); 
+
+%continuous time signal 
+%generate unit step
+clc; 
+clear all;
+close all;
+t=-20:0.01:20; 
+L=length(t); 
+for i=1:L 
+if t(i)<0 
+x1(i)=0; 
+x2(i)=0; 
+else 
+x1(i)=1; 
+x2(i)=t(i); 
+end; 
+end; 
+figure; 
+plot(t,x1); 
+xlabel('t'); 
+ylabel('amplitude'); 
+title('unit step');
+grid
+
+%sum of two signals
+clc; 
+close all; 
+clear all; 
+t=0:0.001:1; 
+L=length(t); 
+f1=1; 
+f2=3; 
+x1=sin(2*pi*f1*t); 
+x2=sin(2*pi*f2*t); 
+figure; subplot(2,1,1); 
+plot(t,x1,’b’,t,x2,’r’); 
+xlabel(‘t’); 
+ylabel(‘amplitude’); 
+title(‘The signals x1(t) and x2(t)’); 
+x3=x1+x2; 
+subplot(2,1,2); 
+plot(t,x3); 
+xlabel(‘t’); 
+ylabel(‘amplitude’); 
+title(‘The sum of x1(t) and x2(t)’); 
+
+%multiplication of two signals
+clc; 
+close all; 
+clear all; 
+t=0:0.001:1; 
+L=length(t); 
+f1=1; 
+f2=3; 
+x1=sin(2*pi*f1*t); 
+x2=sin(2*pi*f2*t); 
+figure; subplot(2,1,1); 
+plot(t,x1,’b’,t,x2,’r’); 
+xlabel(‘t’); 
+ylabel(‘amplitude’); 
+title(‘The signals x1(t) and x2(t)’); 
+x4=x1.*x2; 
+subplot(2,1,2); 
+plot(t,x4); 
+xlabel(‘t’); 
+ylabel(‘amplitude’); 
+title(‘The multiplication of x1(t) and x2(t)’);
+
+%shifting two signals
+clc; 
+close all; 
+clear all; 
+t=0:0.001:1; 
+L=length(t); 
+f1=1; 
+f2=3; 
+x1=sin(2*pi*f1*t); 
+x2=sin(2*pi*f2*t); 
+figure; subplot(2,1,1); 
+plot(t,x1,’b’,t,x2,’r’); 
+xlabel(‘t’); 
+ylabel(‘amplitude’); 
+title(‘The signals x1(t) and x2(t)’);
+x3=[zeros(1,100),x2(1?L-100))]; 
+subplot(2,1,2); 
+plot(t,x3); 
+title(‘the shifting of x1(t)and x2(t)’); 
+xlabel(‘t’); 
+ylabel(‘amplitude’); 
+
+%the impulse response of te system
+clc; 
+clear all; 
+close all; 
+num=input('type the numerator vector'); 
+den=input('type the denominator vector'); 
+N= input(' enter the desired length of the output sequence'); 
+n=0:N-1; 
+imp=[1 zeros(1,N-1)]; 
+H=filter(num, den, imp); 
+disp(' the impulse response of the system is '); 
+disp(H); 
+stem(n,H); 
+xlabel('n'); 
+ylabel('h(n)'); 
+title(' Impulse response'); 
+
+%to generate unit impulse
+clc; 
+clear all; 
+close all; 
+n=-10:1:10; 
+L=length(n); 
+for i=1:L 
+if n(i)==0 
+x1(i)=1; 
+else 
+x1(i)=0; 
+end; 
+if n(i)>=0 
+x2(i)=1; 
+x3(i)=n(i); 
+else 
+x2(i)=0; 
+x3(i)=0; 
+end; 
+end; 
+figure; 
+stem(n,x1); 
+xlabel(' n ---->'); 
+ylabel('amplitude---->'); 
+title('Unit-impulse signal'); 
+
+%to generate unit step
+clc; 
+clear all; 
+close all; 
+n=-5:1:15; 
+L=length(n); 
+for i=1:L 
+if n(i)>=0 
+x1(i)=1; 
+x2(i)=n(i); 
+else 
+x1(i)=0; 
+x2(i)=0; 
+end;
+end; figure; 
+stem(n,x1); 
+xlabel('n'); 
+ylabel('amplitude'); 
+title('Unit step signal') 
+grid 
+
+%to generate exponential sequence a<1
+clc; 
+clear all; 
+close all; 
+n=-10:1:10; 
+L=length(n); 
+a=0.7; 
+x1=a.^n; 
+stem(n,x1); 
+xlabel('n'); 
+ylabel('amplitude'); 
+title('exponential signal');
+
+%to generate exponential sequence a>1
+clc; 
+clear all; 
+close all; 
+n=-5:1:15; 
+L=length(n); 
+a=1.5; 
+x1=a.^n; 
+stem(n,x1); 
+xlabel('n'); 
+ylabel('amplitude'); 
+title('exponential signal'); 
+
+%generate exponential sequence a=1
+clc; 
+clc; 
+clear all; 
+close all; 
+n=-15:1:15; 
+L=length(n); 
+a=1; 
+x1=a.^n; 
+stem(n,x1); 
+xlabel('n'); 
+ylabel('amplitude'); 
+title('exponential signal'); 
+
+%generate sinusoidal sequence
+clc; 
+clear all; 
+close all;
+n=-20:1:20; 
+L=length(n); 
+f=0.1; 
+x1=sin(2*pi*f*n); 
+stem(n,x1); 
+xlabel('n'); 
+ylabel('amplitude'); 
+title('sinusoidal signal');  

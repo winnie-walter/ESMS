@@ -1,0 +1,105 @@
+
+{% load static %}
+{% include "includes/header.html" %}
+
+
+
+
+    <!-- Header -->
+    
+    <!-- Page content -->
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="col-xl-4 order-xl-2">
+      
+        </div>
+        <div class="col-xl-8 order-xl-1">
+          <div class="card">
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Edit Event </h3>
+                </div>
+                
+              </div>
+            </div>
+            <div class="card-body">
+             <form action="/addevent" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+                <h6 class="heading-small text-muted mb-4">Event information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+{% for e in e %}
+                        <label class="form-control-label" for="input-username">Event Name</label>
+                        <input type="text" id="input-username" class="form-control" placeholder="Event Name" value="{{e.name}}" name="eventname">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">Location</label>
+                        <input type="text" id="input-email" class="form-control" value="{{e.location}}" placeholder="Events Location" name="location">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Time</label>
+                        <input type="time" id="input-first-name" class="form-control" value="{{e.time}}" placeholder="Enter Time" value="" name="time">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Event_type</label>
+                        <select name="type" class="form-control">
+                         {% for s in s %}
+                         
+                        <option value="{{s.id}}" selected>{{s.name}}
+                         
+                        </option>
+                      
+                      {% endfor %}
+                        </select>
+                        <!-- <input type="text" id="input-last-name" class="form-control" placeholder="Event_type" value="" name="event"> -->
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Event owner</label>
+                        <select name="user" class="form-control">
+                          {% for s in a %}
+                        <option value="{{s.id}}">{{s.user.username}}</option>
+                        {% endfor %}
+                        </select>
+                        <!-- <input type="text" id="input-last-name" class="form-control" placeholder="Event_type" value="" name="event"> -->
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">invitation card</label>
+                        <input type="file" name="file" accept="image/*" id="input-postal-code" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               {% endfor %}
+                <hr class="my-4" />
+                <!-- Description -->
+              
+                <div class="pl-lg-4">
+                  
+                  <div class="col-4 text-right">
+               <input type="submit" class="btn btn-lg btn-primary" value="Save changes">
+                </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      <br><br><br>
+      {% include "includes/footer.html" %}
+   

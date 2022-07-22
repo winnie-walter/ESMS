@@ -1,0 +1,207 @@
+{% load static %}
+{% include "includes/header.html" %}
+    <!-- Header -->
+    <div class="header pb-6 d-flex align-items-center" style="min-height: 500px; background-image: url({{user.admins.profile.url}}); background-size: cover; background-position: center top;">
+      <!-- Mask -->
+      <span class="mask bg-gradient-default opacity-8"></span>
+      <!-- Header container -->
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <h1 class="display-2 text-white">Hello {{user.first_name | title}}</h1>
+            <p class="text-white mt-0 mb-5">This is your profile page.
+                                                               </p>
+            <a href="/changepassword" class="btn btn-neutral">Change Password</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+      <div class="row">
+        <div class="col-xl-4 order-xl-2">
+          <div class="card card-profile">
+            <img src="{{user.admins.profile.url}}" alt="Image placeholder" class="card-img-top">
+            <div class="row justify-content-center">
+              <div class="col-lg-3 order-lg-2">
+                <div class="card-profile-image">
+                  <a href="#">
+                    <img src="{{user.admins.profile.url}}" class="rounded-circle">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+              <div class="d-flex justify-content-between">
+                <!-- <a href="#" class="btn btn-sm btn-info  mr-4 ">Connect</a>
+                <a href="#" class="btn btn-sm btn-default float-right">Message</a> -->
+              </div>
+            </div>
+            <div class="card-body pt-0">
+              <div class="row">
+                <div class="col">
+                  <div class="card-profile-stats d-flex justify-content-center">
+                    <div>
+                      <span class="heading">{{event}}</span>
+                      <span class="description">event</span>
+                    </div>
+                    <div>
+                      <span class="heading">{{et}}</span>
+                      <span class="description">EventType used</span>
+                    </div>
+                    <div>
+                      <span class="heading">{{user.date_joined|date:"d/m/Y"}}</span> 
+                      <span class="description">crated_at</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <h5 class="h3">
+                 
+                  {{user.last_name | upper}}  {{user.first_name | title}}<span class="font-weight-light">,{{user.admins.middle_name | first  }}</span>
+                </h5>
+                <div class="h5 mt-4">
+              
+              
+                  
+                  <i class="ni location_pin mr-2"></i><b>Date of birth: </b>{{user.admins.dob}}
+            
+                </div>
+                <div class="h5 mt-4">
+                 
+                  <i class="ni business_briefcase-24 mr-2"></i><b>Age:</b> {{age}} years old
+                  
+                </div>
+                <div>
+                  <i class="ni education_hat mr-2"></i>{{user.admins.address | title}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-8 order-xl-1">
+          <div class="card">
+            <div class="card-header">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h3 class="mb-0">Edit profile </h3>
+                </div>
+                <!-- <div class="col-4 text-right">
+                  <a href="#!" class="btn btn-sm btn-primary">Settings</a>
+                </div> -->
+              </div>
+            </div>
+            <div class="card-body">
+
+
+               <form action="/profile" method="POST" enctype="multipart/form-data">
+                 {% csrf_token %}
+                <h6 class="heading-small text-muted mb-4">User information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="form-group">
+
+                        <label class="form-control-label">First Name</label>
+                        <input type="text" name="fname" class="form-control" placeholder="first name" value="{{user.first_name}}">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-email">middle name</label>
+                        <input type="text" id="input-email" name="mname" class="form-control" placeholder="middel name" value="{{user.admins.middle_name}}">
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-first-name">Last Name</label>
+                        <input type="text" id="input-first-name" name="lname" class="form-control" placeholder="Last Name" value="{{user.last_name}}">
+                      </div>
+                  </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Date of Birth</label>
+                        <input type="date" name="dob" class="form-control" value="{{user.admins.dob | date:"Y-m-d"}}">
+                      </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-city">Gender</label>
+                         <select  id="input-city" class="form-control" name="gender">
+
+                           {% if user.admins.gender == 'Male' %}
+                          <option value="{{user.admins.gender}}" selected>{{user.admins.gender}}</option>
+                          <option value="Female">Female</option>
+                          {% elif user.admins.gender == 'Female' %}
+                          <option value="Male">male</option>
+                          <option value="{{user.admins.gender}}" selected>{{user.admins.gender}}</option>
+                          {% else %}
+                          <option value=""  disabled selected hidden>Select Gender</option>
+                          <option value="Male">male</option>
+                          <option value="Female">Female</option>
+                          {% endif %}
+                           
+                         </select>
+                        <!-- <input type="text" id="input-city" class="form-control" placeholder="City" value="{{user.admins.gender}}"> -->
+                      </div>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Profile</label>
+                        <input type="file" name="profile" id="input-postal-code" class="form-control" placeholder="Profile picture">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <hr class="my-4" />
+                <!-- Address -->
+                <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                <div class="pl-lg-4">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-address">Address</label>
+                        <input id="input-address" name="address" class="form-control" placeholder="Home Address" value="{{user.admins.address}}" type="text">
+                      </div>
+                    </div>
+                    <div class="col-lg-5">
+                      <div class="form-group">
+                        <label class="form-control-label" for="input-country">Phone Number</label>
+                        <input type="text" name="phone" id="input-country" class="form-control" placeholder="Country" value="{{user.admins.phone_number}}">
+                      </div>
+                    </div>
+                   
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-11">
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="username" class="form-control" value="{{user.username}}">
+                      </div>
+                   
+                    </div>
+                    
+                    
+                  </div>
+                </div>
+                <hr class="my-4" />
+                <!-- Description -->
+              
+                <div class="pl-lg-4">
+                  
+                  <div class="col-4 text-right">
+                    <button type="submit" class="btn btn-primary submit-btn">Save Changes</button>
+                </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer -->
+      {% include "includes/footer.html" %}
